@@ -1,0 +1,22 @@
+[project]
+name = "phones"
+version = "0.0.1"
+description = "A collection of utilities for handling IPA phones."
+authors = [
+    {name = "Christoph Minixhofer", email = "christoph.minixhofer@gmail.com"},
+]
+dependencies = [
+    "pandas>=0.25.3",
+]
+requires-python = ">=3.6"
+license = {text = "MIT"}
+
+[project.urls]
+homepage = ""
+
+[tool]
+[tool.pdm]
+
+[build-system]
+requires = ["pdm-pep517"]
+build-backend = "pdm.pep517.api"
