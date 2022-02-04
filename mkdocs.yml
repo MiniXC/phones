@@ -1,0 +1,38 @@
+site_name: phones
+theme:
+  name: material
+nav:
+- Home: index.md
+- Example: examples/basic_usage.ipynb
+- API Reference: reference.md
+
+plugins:
+- search
+- mkdocstrings:
+    handlers:
+      python:
+        selection:
+          filters:
+            - "!^_"  # exlude all members starting with _
+            - "^__init__$"  # but always include __init__ modules and methods
+            - "^__getitem__$"
+        setup_commands:
+            - import sys
+            - sys.path.append("src")
+    watch:
+    - src/phones
+- mkdocs-jupyter
+
+markdown_extensions:
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - admonition
+  - tables
+  - toc:
+      permalink: "#"
+  - markdown_include.include:
+      base_path: docs
