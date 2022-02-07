@@ -1,10 +1,18 @@
 site_name: phones
 theme:
   name: material
+  icon:
+    logo: material/alphabet-tengwar
+  palette:
+    primary: black
+  favicon: images/favicon.png
 nav:
 - Home: index.md
 - Example: examples/basic_usage.ipynb
 - API Reference: reference.md
+
+extra_css:
+  - stylesheets/hide_prompts.css
 
 plugins:
 - search
@@ -19,6 +27,9 @@ plugins:
         setup_commands:
             - import sys
             - sys.path.append("src")
+            - from unittest.mock import MagicMock as mock
+            - sys.modules["distance"] = mock()
+            - sys.modules["distance.euclidean"] = mock()
     watch:
     - src/phones
 - mkdocs-jupyter

@@ -18,6 +18,9 @@ license = {text = "MIT"}
 homepage = ""
 
 [project.optional-dependencies]
+plots = [
+    "plotly>=5.5.0",
+]
 [tool]
 [tool.pdm]
 [tool.pdm.dev-dependencies]

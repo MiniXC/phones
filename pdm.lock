@@ -350,6 +350,16 @@ version = "0.7.5"
 summary = "Tiny 'shelve'-like database with concurrency support"
 
 [[package]]
+name = "plotly"
+version = "5.5.0"
+requires_python = ">=3.6"
+summary = "An open-source, interactive data visualization library for Python"
+dependencies = [
+    "six",
+    "tenacity>=6.2.0",
+]
+
+[[package]]
 name = "prompt-toolkit"
 version = "3.0.3"
 requires_python = ">=3.6"
@@ -458,6 +468,12 @@ requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 summary = "Python 2 and 3 compatibility utilities"
 
 [[package]]
+name = "tenacity"
+version = "8.0.1"
+requires_python = ">=3.6"
+summary = "Retry code until it succeeds"
+
+[[package]]
 name = "testpath"
 version = "0.5.0"
 requires_python = ">= 3.5"
@@ -517,7 +533,7 @@ summary = "Backport of pathlib-compatible object wrapper for zip files"
 
 [metadata]
 lock_version = "3.1"
-content_hash = "sha256:65ab3f5221b5380cd4df53f96bb5e85add1e80e1d8d0e6347e6542dcfebc06c5"
+content_hash = "sha256:c6da3c826a320397b6181ad32be8ddc374c8ba41cae03ce06c3b776e7c3b0c6b"
 
 [metadata.files]
 "appnope 0.1.2" = [
@@ -794,6 +810,10 @@ content_hash = "sha256:65ab3f5221b5380cd4df53f96bb5e85add1e80e1d8d0e6347e6542dcf
     {file = "pickleshare-0.7.5-py2.py3-none-any.whl", hash = "sha256:9649af414d74d4df115d5d718f82acb59c9d418196b7b4290ed47a12ce62df56"},
     {file = "pickleshare-0.7.5.tar.gz", hash = "sha256:87683d47965c1da65cdacaf31c8441d12b8044cdec9aca500cd78fc2c683afca"},
 ]
+"plotly 5.5.0" = [
+    {file = "plotly-5.5.0-py2.py3-none-any.whl", hash = "sha256:bc7d19272560f73fe4c2c989c31b00774a35d3a76891fab0b72c17616862d0e0"},
+    {file = "plotly-5.5.0.tar.gz", hash = "sha256:20b8a1a0f0434f9b8d10eb7caa66e947a9a1d698e5a53d40d447bbc0d2ae41f0"},
+]
 "prompt-toolkit 3.0.3" = [
     {file = "prompt_toolkit-3.0.3-py3-none-any.whl", hash = "sha256:c93e53af97f630f12f5f62a3274e79527936ed466f038953dfa379d4941f651a"},
     {file = "prompt_toolkit-3.0.3.tar.gz", hash = "sha256:a402e9bf468b63314e37460b68ba68243d55b2f8c4d0192f85a019af3945050e"},
@@ -936,6 +956,10 @@ content_hash = "sha256:65ab3f5221b5380cd4df53f96bb5e85add1e80e1d8d0e6347e6542dcf
 "six 1.16.0" = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
+]
+"tenacity 8.0.1" = [
+    {file = "tenacity-8.0.1-py3-none-any.whl", hash = "sha256:f78f4ea81b0fabc06728c11dc2a8c01277bfc5181b321a4770471902e3eb844a"},
+    {file = "tenacity-8.0.1.tar.gz", hash = "sha256:43242a20e3e73291a28bcbcacfd6e000b02d3857a9a9fff56b297a27afdc932f"},
 ]
 "testpath 0.5.0" = [
     {file = "testpath-0.5.0-py3-none-any.whl", hash = "sha256:8044f9a0bab6567fc644a3593164e872543bb44225b0e24846e2c89237937589"},
