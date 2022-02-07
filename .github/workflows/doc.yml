@@ -23,6 +23,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install -U .
+          pip install -U pdm
           pdm install -G docs
       - name: Build Documentation
         run: cd docs && pdm run mkdocs build
