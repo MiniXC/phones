@@ -13,7 +13,7 @@
     
     
       
-        <title>Loading a Phone Collection - phones</title>
+        <title>Mapping between Languages - phones</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#using-phonecollection" class="md-skip">
+        <a href="#on-a-collection-level" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Loading a Phone Collection
+              Mapping between Languages
             
           </span>
         </div>
@@ -226,6 +226,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../basic_usage/" class="md-nav__link">
+        Loading a Phone Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -236,12 +250,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Loading a Phone Collection
+          Mapping between Languages
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Loading a Phone Collection
+        Mapping between Languages
       </a>
       
         
@@ -258,29 +272,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-phonecollection" class="md-nav__link">
-    Using PhoneCollection
-  </a>
-  
-    <nav class="md-nav" aria-label="Using PhoneCollection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#getting-all-phones-in-a-language" class="md-nav__link">
-    Getting all Phones in a Language
+  <a href="#on-a-collection-level" class="md-nav__link">
+    On a Collection Level
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#getting-a-specific-phone" class="md-nav__link">
-    Getting a Specific Phone
+      
+        <li class="md-nav__item">
+  <a href="#on-a-phone-level" class="md-nav__link">
+    On a Phone Level
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#noisy-conversion" class="md-nav__link">
+    Noisy Conversion
+  </a>
   
 </li>
       
@@ -288,20 +296,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mapping_phones/" class="md-nav__link">
-        Mapping between Languages
-      </a>
     </li>
   
 
@@ -381,29 +375,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-phonecollection" class="md-nav__link">
-    Using PhoneCollection
-  </a>
-  
-    <nav class="md-nav" aria-label="Using PhoneCollection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#getting-all-phones-in-a-language" class="md-nav__link">
-    Getting all Phones in a Language
+  <a href="#on-a-collection-level" class="md-nav__link">
+    On a Collection Level
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#getting-a-specific-phone" class="md-nav__link">
-    Getting a Specific Phone
+      
+        <li class="md-nav__item">
+  <a href="#on-a-phone-level" class="md-nav__link">
+    On a Phone Level
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#noisy-conversion" class="md-nav__link">
+    Noisy Conversion
+  </a>
   
 </li>
       
@@ -420,7 +408,7 @@
               
                 
 
-  <h1>Loading a Phone Collection</h1>
+  <h1>Mapping between Languages</h1>
 
 
 <div class="notebook-content">
@@ -1572,18 +1560,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     });
     </script>
     <!-- End of mathjax configuration -->
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="using-phonecollection">Using <code>PhoneCollection</code><a class="anchor-link" href="#Using-PhoneCollection">&#182;</a></h2><p>The <code>PhoneCollection</code> class loads all phones from <a href="https://phoible.org">phoible</a> per default.
-This means you have access to phone definitons and their features in many languages.</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 
     <div class="inner_cell">
         
@@ -1602,11 +1581,56 @@ This means you have access to phone definitons and their features in many langua
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="getting-all-phones-in-a-language">Getting all Phones in a Language<a class="anchor-link" href="#Getting-all-Phones-in-a-Language">&#182;</a></h3><p>Let's first retrieve the first 5 phones in English.
-As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Languages/List_of_ISO_639-3_language_codes_(2019\the">ISO 639-3 language codes</a>), we use <code>.langs</code> with the <code>"eng"</code> code to retrieve English phones.</p>
+<p>There are several ways to convert phones between languages.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="on-a-collection-level">On a Collection Level<a class="anchor-link" href="#On-a-Collection-Level">&#182;</a></h3><p>The <code>get_closest</code> method allows you to find the closest phone to the source language phone in the target language and shows you the euclidean distance as well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="c1"># get the closest german phones to the english phone ð</span>
+<span class="n">pc</span><span class="o">.</span><span class="n">get_closest</span><span class="p">(</span><span class="s2">&quot;ð&quot;</span><span class="p">,</span> <span class="s2">&quot;eng&quot;</span><span class="p">,</span> <span class="s2">&quot;deu&quot;</span><span class="p">)</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(2.8284271247461903, z (deu)), (2.8284271247461903, ʒ (deu))]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1616,8 +1640,8 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
         
         
         <div class="input_area">
-            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="c1"># get 5 english phones</span>
-<span class="n">pc</span><span class="o">.</span><span class="n">langs</span><span class="p">(</span><span class="s2">&quot;eng&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="c1"># also get phones which are further away</span>
+<span class="n">pc</span><span class="o">.</span><span class="n">get_closest</span><span class="p">(</span><span class="s2">&quot;ð&quot;</span><span class="p">,</span> <span class="s2">&quot;eng&quot;</span><span class="p">,</span> <span class="s2">&quot;deu&quot;</span><span class="p">,</span> <span class="n">return_all</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 
         </div>
@@ -1637,7 +1661,11 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[aː (eng), b (eng), d (eng), d̠ʒ (eng), e (eng)]</pre>
+<pre>[(2.8284271247461903, z (deu)),
+ (2.8284271247461903, ʒ (deu)),
+ (3.4641016151377544, d (deu)),
+ (3.4641016151377544, s (deu)),
+ (3.4641016151377544, ʃ (deu))]</pre>
 </div>
 
 </div>
@@ -1649,21 +1677,20 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can also retrieve phones in multiple languages.</p>
+<h3 id="on-a-phone-level">On a Phone Level<a class="anchor-link" href="#On-a-Phone-Level">&#182;</a></h3><p>Alternatively, the <code>.closest</code> method each phone has can be used.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 
     <div class="inner_cell">
         
         
         <div class="input_area">
-            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="c1"># get 5 english/german phones</span>
-<span class="n">pc</span><span class="o">.</span><span class="n">langs</span><span class="p">([</span><span class="s2">&quot;eng&quot;</span><span class="p">,</span> <span class="s2">&quot;deu&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">pc</span><span class="o">.</span><span class="n">phones</span><span class="p">(</span><span class="s2">&quot;ð&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">val</span><span class="o">.</span><span class="n">langs</span><span class="p">(</span><span class="s2">&quot;deu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">closest</span><span class="p">()</span>
 </pre></div>
 
         </div>
@@ -1677,13 +1704,13 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[a (deu), aɪ (deu), aʊ (deu), aː (deu), aː (eng)]</pre>
+<pre>[(2.8284271247461903, z (deu)), (2.8284271247461903, ʒ (deu))]</pre>
 </div>
 
 </div>
@@ -1695,52 +1722,9 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="getting-a-specific-phone">Getting a Specific Phone<a class="anchor-link" href="#Getting-a-Specific-Phone">&#182;</a></h3><p>Using <code>.phones</code>, we can also retrieve specific phones.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-
-    <div class="inner_cell">
-        
-        
-        <div class="input_area">
-            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">pc</span><span class="o">.</span><span class="n">phones</span><span class="p">(</span><span class="s2">&quot;aɪ&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-</pre></div>
-
-        </div>
-    </div>
-
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[aɪ (blb), aɪ (deu), aɪ (ruk), aɪ (shk)]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>You can use <code>.val</code>, if you want to get only one phone instead of a phone for each language.</p>
+<h3 id="noisy-conversion">Noisy Conversion<a class="anchor-link" href="#Noisy-Conversion">&#182;</a></h3><p>As you can see above, there are two phones with the same distance.
+You might want to introduce some randomness and translate to different close phones each time.
+In this case, you can use the <code>.noise</code> method.</p>
 
 </div>
 </div>
@@ -1753,7 +1737,14 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
         
         
         <div class="input_area">
-            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">pc</span><span class="o">.</span><span class="n">phones</span><span class="p">(</span><span class="s2">&quot;aɪ&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">val</span>
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="p">(</span>
+    <span class="n">pc</span>
+    <span class="o">.</span><span class="n">phones</span><span class="p">(</span><span class="s2">&quot;ð&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">val</span>
+    <span class="o">.</span><span class="n">noise</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">langs</span><span class="p">(</span><span class="s2">&quot;deu&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">closest</span><span class="p">()</span>
+<span class="p">)</span>
 </pre></div>
 
         </div>
@@ -1773,7 +1764,7 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>aɪ</pre>
+<pre>[(2.8284271247461903, ʒ (deu))]</pre>
 </div>
 
 </div>
@@ -1785,7 +1776,8 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Using <code>.vector</code>, the vector representation of the phone can be accessed.</p>
+<p>This is done by corrupting each value in the phone vector with probability <code>p</code>.</p>
+<p>The higher <code>p</code>, the more likely changes are to the vector, which can lead to phones with higher distances.</p>
 
 </div>
 </div>
@@ -1798,7 +1790,14 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
         
         
         <div class="input_area">
-            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">pc</span><span class="o">.</span><span class="n">phones</span><span class="p">(</span><span class="s2">&quot;aɪ&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">val</span><span class="o">.</span><span class="n">vector</span>
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="p">(</span>
+    <span class="n">pc</span>
+    <span class="o">.</span><span class="n">phones</span><span class="p">(</span><span class="s2">&quot;ð&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">val</span>
+    <span class="o">.</span><span class="n">noise</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">langs</span><span class="p">(</span><span class="s2">&quot;deu&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">closest</span><span class="p">()</span>
+<span class="p">)</span>
 </pre></div>
 
         </div>
@@ -1818,9 +1817,7 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([-1.,  0.,  1., -1.,  0., -1., -1.,  1., -1.,  0.,  0.,  1., -1.,
-        0.,  0.,  0., -1.,  0., -1., -1.,  0., -1., -1.,  1., -1., -1.,
-        0., -1.,  1., -1., -1.,  0.,  1., -1., -1.,  0., -1.])</pre>
+<pre>[(7.3484692283495345, øː (deu))]</pre>
 </div>
 
 </div>
@@ -1848,7 +1845,7 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+        <a href="../basic_usage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Loading a Phone Collection" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1857,20 +1854,20 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
               <span class="md-footer__direction">
                 Previous
               </span>
-              Home
+              Loading a Phone Collection
             </div>
           </div>
         </a>
       
       
         
-        <a href="../mapping_phones/" class="md-footer__link md-footer__link--next" aria-label="Next: Mapping between Languages" rel="next">
+        <a href="../convert_alphabets/" class="md-footer__link md-footer__link--next" aria-label="Next: Converting between Alphabets" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Mapping between Languages
+              Converting between Alphabets
             </div>
           </div>
           <div class="md-footer__button md-icon">
