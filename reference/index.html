@@ -142,6 +142,18 @@
 </div>
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/MiniXC/phones/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -174,6 +186,18 @@
     </a>
     phones
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MiniXC/phones/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -871,6 +895,10 @@
             <article class="md-content__inner md-typeset">
               
                 
+<a href="https://github.com/MiniXC/phones/edit/master/docs/reference.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
 
 <h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">#</a></h1>
 <h2 id="phones_1"><code>phones</code><a class="headerlink" href="#phones_1" title="Permanent link">#</a></h2>
@@ -1120,7 +1148,7 @@ If it's a comma-delimited list of "+" and "-", return the mean of the list of fl
 
 
 <h4 class="doc doc-heading" id="phones.PhoneCollection.get_closest">
-<code class="highlight language-python"><span class="n">get_closest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phone</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">src_language</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tgt_language</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">return_allophones</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">distance_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">euclidean</span> <span class="n">at</span> <span class="mh">0x7f58baab04d0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">distance_weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">allow_allophones</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">return_all</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]]</span></code>
+<code class="highlight language-python"><span class="n">get_closest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phone</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">src_language</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tgt_language</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">return_allophones</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">distance_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">euclidean</span> <span class="n">at</span> <span class="mh">0x7fa37cec34d0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">distance_weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">allow_allophones</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">return_all</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]]</span></code>
 
 
 <a class="headerlink" href="#phones.PhoneCollection.get_closest" title="Permanent link">#</a></h4>
@@ -1183,7 +1211,7 @@ It also returns the distance between the source phone and the closest phone. </p
         <td><code>distance_fn</code></td>
         <td><code>Callable[[Iterable[float], Iterable[float]], float]</code></td>
         <td><p>The distance function to use.</p></td>
-        <td><code>&lt;function euclidean at 0x7f58baab04d0&gt;</code></td>
+        <td><code>&lt;function euclidean at 0x7fa37cec34d0&gt;</code></td>
       </tr>
       <tr>
         <td><code>distance_weights</code></td>
@@ -1233,7 +1261,7 @@ If <code>allow_allophones</code> is True, returns a Tuple of lists with the firs
 
 
 <h4 class="doc doc-heading" id="phones.PhoneCollection.get_closest_by_phone">
-<code class="highlight language-python"><span class="n">get_closest_by_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phone</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">distance_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">euclidean</span> <span class="n">at</span> <span class="mh">0x7f58baab04d0</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]</span></code>
+<code class="highlight language-python"><span class="n">get_closest_by_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phone</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">distance_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">euclidean</span> <span class="n">at</span> <span class="mh">0x7fa37cec34d0</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]</span></code>
 
 
 <a class="headerlink" href="#phones.PhoneCollection.get_closest_by_phone" title="Permanent link">#</a></h4>
@@ -1263,7 +1291,7 @@ If <code>allow_allophones</code> is True, returns a Tuple of lists with the firs
         <td><code>distance_fn</code></td>
         <td><code>Callable[[Iterable[float], Iterable[float]], float]</code></td>
         <td><p>The function that will be used to measure the distance between phones.</p></td>
-        <td><code>&lt;function euclidean at 0x7f58baab04d0&gt;</code></td>
+        <td><code>&lt;function euclidean at 0x7fa37cec34d0&gt;</code></td>
       </tr>
   </tbody>
 </table>
@@ -1293,7 +1321,7 @@ If <code>allow_allophones</code> is True, returns a Tuple of lists with the firs
 
 
 <h4 class="doc doc-heading" id="phones.PhoneCollection.get_closest_by_vector">
-<code class="highlight language-python"><span class="n">get_closest_by_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">distance_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">euclidean</span> <span class="n">at</span> <span class="mh">0x7f58baab04d0</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]</span></code>
+<code class="highlight language-python"><span class="n">get_closest_by_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">distance_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">euclidean</span> <span class="n">at</span> <span class="mh">0x7fa37cec34d0</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]</span></code>
 
 
 <a class="headerlink" href="#phones.PhoneCollection.get_closest_by_vector" title="Permanent link">#</a></h4>
@@ -1323,7 +1351,7 @@ If <code>allow_allophones</code> is True, returns a Tuple of lists with the firs
         <td><code>distance_fn</code></td>
         <td><code>Callable[[Iterable[float], Iterable[float]], float]</code></td>
         <td><p>The function that will be used to calculate the distance between the vector and phones.</p></td>
-        <td><code>&lt;function euclidean at 0x7f58baab04d0&gt;</code></td>
+        <td><code>&lt;function euclidean at 0x7fa37cec34d0&gt;</code></td>
       </tr>
   </tbody>
 </table>
@@ -1415,7 +1443,7 @@ and the phone. We return the mean of all allophone &lt;-&gt; phone distances.</p
 
 
 <h4 class="doc doc-heading" id="phones.PhoneCollection.get_mean_phone_distance">
-<code class="highlight language-python"><span class="n">get_mean_phone_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phone</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">other_phone</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">distance_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">euclidean</span> <span class="n">at</span> <span class="mh">0x7f58baab04d0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">distance_weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
+<code class="highlight language-python"><span class="n">get_mean_phone_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phone</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">other_phone</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">distance_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">euclidean</span> <span class="n">at</span> <span class="mh">0x7fa37cec34d0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">distance_weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
 
 
 <a class="headerlink" href="#phones.PhoneCollection.get_mean_phone_distance" title="Permanent link">#</a></h4>
@@ -1452,7 +1480,7 @@ distance between that phone and another phone.</p>
         <td><code>distance_fn</code></td>
         <td><code>Callable[[Iterable[float], Iterable[float]], float]</code></td>
         <td><p>The distance function to use.</p></td>
-        <td><code>&lt;function euclidean at 0x7f58baab04d0&gt;</code></td>
+        <td><code>&lt;function euclidean at 0x7fa37cec34d0&gt;</code></td>
       </tr>
       <tr>
         <td><code>distance_weights</code></td>
