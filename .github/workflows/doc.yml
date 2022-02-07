@@ -22,8 +22,7 @@ jobs:
           architecture: "x64"
       - name: Install Dependencies
         run: |
-          pip install -U .
-          pip install -U pdm
+          curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
           pdm install -G docs
       - name: Build Documentation
         run: cd docs && pdm run mkdocs build
