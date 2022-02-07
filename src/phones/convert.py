@@ -31,13 +31,14 @@ import pandas as pd
 import re
 import pkg_resources
 
-class Converter():
+
+class Converter:
     def __init__(self) -> None:
-        stream = pkg_resources.resource_stream(__name__, 'data/phonemes.csv')
+        stream = pkg_resources.resource_stream(__name__, "data/phonemes.csv")
         self.df = pd.read_csv(stream)
 
     def convert(self, x, _from="xsampa", _to="ipa"):
-        '''
+        """
         It takes a string, and replaces all the symbols of the ``_from`` format to the ``_to`` format.
         
         Args:
@@ -47,10 +48,12 @@ class Converter():
         
         Returns:
             The converted string.
-        '''
-        global df
-        df = self.df.dropna(subset=[_from, _to])
-        df = df.sort_values([_from,_to])
+        """
+        df = self.df.dropna(subset=[_from, _to]).copy()
+        df["empty"] = df[_to].apply(lambda x: len(x) == 0)
+        df["length"] = df[_from].apply(lambda x: len(x))
+        df = df.sort_values(["empty", "length", _from, _to], ascending=False)
+        df = df.drop(columns=["empty", "length"])
         df[_from] = df[_from].apply(lambda x: f"{x}(?![^\\(]*[\\)])")
         df[_to] = df[_to].apply(lambda x: x.replace("\.", "."))
         df[_to] = df[_to].apply(lambda x: f"({x})")
@@ -63,14 +66,18 @@ class Converter():
         df.loc[len(df)] = ["", "", ""]
         df.iloc[-1][_from] = "\\(|\\)"
         x = f" {x} "
-        x = x.replace("ɜ˞", "ɝ") # necessary because this seems to happen automatically in R
+        x = x.replace(
+            "ɜ˞", "ɝ"
+        )  # necessary because this seems to happen automatically in R
         for _, row in df.iterrows():
             x = re.sub(row[_from], row[_to], x)
         return x.strip()
 
+
 converter = Converter()
 
-class Ipa():
+
+class Ipa:
     def __init__(self, phone: str) -> None:
         self.x = phone
 
@@ -85,7 +92,8 @@ class Ipa():
     def __repr__(self) -> str:
         return self.x
 
-class Arpabet():
+
+class Arpabet:
     def __init__(self, phone: str) -> None:
         self.x = phone
 
@@ -100,7 +108,8 @@ class Arpabet():
     def __repr__(self) -> str:
         return self.x
 
-class XSampa():
+
+class XSampa:
     def __init__(self, phone: str) -> None:
         self.x = phone
 

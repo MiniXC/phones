@@ -14,6 +14,7 @@ from pathlib import Path
 from .sources import PhoneSource, PHOIBLE
 from .features import Phone
 
+
 class PhoneCollection:
     def __init__(
         self,
@@ -156,7 +157,13 @@ class PhoneCollection:
         Returns:
             A list of ``Phone`` objects.
         """
-        phone_df = self.data.groupby(self.columns).mean().reset_index()
+        phone_df = (
+            self.data.groupby(
+                [c for c in self.columns if c != self.source.allophone_column]
+            )
+            .mean()
+            .reset_index()
+        )
         return [self._row_to_phone(row) for _, row in phone_df.iterrows()]
 
     @property
@@ -179,8 +186,8 @@ class PhoneCollection:
         phone_df = phone_df[phone_df[self.source.language_column] == language]
         return phone_df
 
-    def get_mean_allophone_distance(self, distance_weights=None, show_progress=True):
-        '''
+    def get_mean_allophone_distance(self, distance_weights=None, show_progress=False):
+        """
         For each row in the dataframe, we get the phone and allophone values.
         If the allophone is different from the phone, we get the mean distance between the allophone
         and the phone. We return the mean of all allophone <-> phone distances.
@@ -191,7 +198,7 @@ class PhoneCollection:
         
         Returns:
             The mean of the distances between allophones and their phones.
-        '''
+        """
         dists = []
         for _, row in tqdm(
             self.data.iterrows(), total=len(self.data), disable=(not show_progress)
@@ -306,7 +313,7 @@ class PhoneCollection:
         
         Args:
             phone: The phone to find the closest phone to.
-            distance_fn@ The function that will be used to measure the distance between phones.
+            distance_fn: The function that will be used to measure the distance between phones.
         
         Returns:
             A list of tuples, where each tuple contains a distance and a phone.

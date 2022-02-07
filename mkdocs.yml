@@ -8,7 +8,11 @@ theme:
   favicon: images/favicon.png
 nav:
 - Home: index.md
-- Example: examples/basic_usage.ipynb
+- Usage:
+    Loading a Phone Collection: examples/basic_usage.ipynb
+    Mapping between Languages: examples/mapping_phones.ipynb
+    Converting between Alphabets: examples/convert_alphabets.ipynb
+    Working with Distances: examples/phone_distances.ipynb
 - API Reference: reference.md
 
 extra_css:

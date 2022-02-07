@@ -2,17 +2,19 @@ from typing import Dict, List, Optional, Tuple, Union
 from unicodedata import normalize
 import numpy as np
 
-class PhoneFeature():
+
+class PhoneFeature:
     def __init__(self, feature: str, value: float) -> None:
-        '''
+        """
         Create a new instance of a ``PhoneFeature`` with the feature and value provided.
         
         Args:
             feature: The feature to be evaluated.
             value: The value of the feature.
-        '''
+        """
         self.feature = feature.lower()
         self.value = value
+
 
 class Phone:
     def __init__(
@@ -65,9 +67,9 @@ class Phone:
             ```
             > ``[(2.0, z (eng))]``
         """
-        self.index = normalize('NFC', index)
+        self.index = normalize("NFC", index)
         self.feature_names = [f.lower() for f in sorted(features.keys())]
-        features = {k.lower():v for k,v in features.items()}
+        features = {k.lower(): v for k, v in features.items()}
         self.vector = [features[k] for k in self.feature_names]
         self.vector = np.array(self.vector)
         self.language_code = language_code
@@ -103,9 +105,7 @@ class Phone:
         else:
             assert self.collection.lang_filter == __o.collection.lang_filter
             self.vector += __o.vector
-        return self.collection.get_closest_by_vector(
-            Phone._normalize(self.vector)
-        )
+        return self.collection.get_closest_by_vector(Phone._normalize(self.vector))
 
     def __sub__(self, __o: object) -> object:
         assert self.collection is not None
@@ -114,9 +114,7 @@ class Phone:
         else:
             assert self.collection.lang_filter == __o.collection.lang_filter
             self.vector -= __o.vector
-        return self.collection.get_closest_by_vector(
-            Phone._normalize(self.vector)
-        )
+        return self.collection.get_closest_by_vector(Phone._normalize(self.vector))
 
     def __truediv__(self, __o: object) -> object:
         assert self.collection is not None
@@ -125,9 +123,7 @@ class Phone:
         else:
             assert self.collection.lang_filter == __o.collection.lang_filter
             self.vector /= __o.vector
-        return self.collection.get_closest_by_vector(
-            Phone._normalize(self.vector)
-        )
+        return self.collection.get_closest_by_vector(Phone._normalize(self.vector))
 
     def __mul__(self, __o: object) -> object:
         assert self.collection is not None
@@ -136,9 +132,7 @@ class Phone:
         else:
             assert self.collection.lang_filter == __o.collection.lang_filter
             self.vector *= __o.vector
-        return self.collection.get_closest_by_vector(
-            Phone._normalize(self.vector)
-        )
+        return self.collection.get_closest_by_vector(Phone._normalize(self.vector))
 
     def __lt__(self, __o: object) -> bool:
         return self.index < __o.index
@@ -184,11 +178,11 @@ class Phone:
         self.vector = Phone._normalize(self.vector)
         return self
 
-    def closest(self) -> List[Tuple[float,object]]:
-        '''
+    def closest(self) -> List[Tuple[float, object]]:
+        """
         Given the current phone's vector, return the closest phone(s) in the collection and their distances.
         
         Returns:
             A list of distance,phone tuples.
-        '''
+        """
         return self.collection.get_closest_by_vector(self.vector)

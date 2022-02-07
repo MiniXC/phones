@@ -1,3 +1,5 @@
+![phones](https://i.imgur.com/wpjtC6V.png)
+
 # phones
 
 [![pdm-managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm.fming.dev)
@@ -11,7 +13,7 @@ These IPA phones can be useful because they can describe how words are pronounce
 - Convert between [ARPABET](https://en.wikipedia.org/wiki/ARPABET), [X-SAMPA/SAMPA](https://en.wikipedia.org/wiki/X-SAMPA) and [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet) notation.
 - Compute phone distances.
 - Do phone arithmetic on a phone and phone-feature level.
-- Visualise phones using and their distances when installing ``phones[plots]``.
+- Visualise phones and their distances when installing ``phones[plots]``.
 
 ## Installation
 
