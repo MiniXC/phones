@@ -1,0 +1,33 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "*.md"
+      - docs/**
+      - .github/workflows/doc.yml
+      - "src/phones/**"
+
+jobs:
+  build-doc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+          architecture: "x64"
+      - name: Install Dependencies
+        run: |
+          pip install -U .
+          pdm install -G doc
+      - name: Build Documentation
+        run: cd docs && pdm run mkdocs build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/site

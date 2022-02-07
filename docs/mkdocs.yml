@@ -30,12 +30,9 @@ plugins:
             - "^__getitem__$"
         setup_commands:
             - import sys
-            - sys.path.append("src")
-            - from unittest.mock import MagicMock as mock
-            - sys.modules["distance"] = mock()
-            - sys.modules["distance.euclidean"] = mock()
+            - sys.path.append("../src")
     watch:
-    - src/phones
+    - ../src/phones
 - mkdocs-jupyter
 
 markdown_extensions:
