@@ -100,39 +100,23 @@ class Phone:
 
     def __add__(self, __o: object) -> object:
         assert self.collection is not None
+        vector = self.vector
         if isinstance(__o, PhoneFeature):
-            self.vector[self.feature_names.index(__o.feature)] += __o.value
+            vector[self.feature_names.index(__o.feature)] += __o.value
         else:
             assert self.collection.lang_filter == __o.collection.lang_filter
-            self.vector += __o.vector
-        return self.collection.get_closest_by_vector(Phone._normalize(self.vector))
+            vector += __o.vector
+        return self.collection.get_closest_by_vector(np.clip(vector, -1, 1))
 
     def __sub__(self, __o: object) -> object:
         assert self.collection is not None
+        vector = self.vector
         if isinstance(__o, PhoneFeature):
-            self.vector[self.feature_names.index(__o.feature)] -= __o.value
+            vector[self.feature_names.index(__o.feature)] -= __o.value
         else:
             assert self.collection.lang_filter == __o.collection.lang_filter
-            self.vector -= __o.vector
-        return self.collection.get_closest_by_vector(Phone._normalize(self.vector))
-
-    def __truediv__(self, __o: object) -> object:
-        assert self.collection is not None
-        if isinstance(__o, PhoneFeature):
-            self.vector[self.feature_names.index(__o.feature)] /= __o.value
-        else:
-            assert self.collection.lang_filter == __o.collection.lang_filter
-            self.vector /= __o.vector
-        return self.collection.get_closest_by_vector(Phone._normalize(self.vector))
-
-    def __mul__(self, __o: object) -> object:
-        assert self.collection is not None
-        if isinstance(__o, PhoneFeature):
-            self.vector[self.feature_names.index(__o.feature)] *= __o.value
-        else:
-            assert self.collection.lang_filter == __o.collection.lang_filter
-            self.vector *= __o.vector
-        return self.collection.get_closest_by_vector(Phone._normalize(self.vector))
+            vector -= __o.vector
+        return self.collection.get_closest_by_vector(np.clip(vector, -1, 1))
 
     def __lt__(self, __o: object) -> bool:
         return self.index < __o.index

@@ -13,6 +13,8 @@ nav:
     Mapping between Languages: examples/mapping_phones.ipynb
     Converting between Alphabets: examples/convert_alphabets.ipynb
     Working with Distances: examples/phone_distances.ipynb
+    Arithmetic for Phones and Features: examples/arithmetic.ipynb
+- Plots: examples/plots.ipynb
 - API Reference: reference.md
 
 repo_url: https://github.com/MiniXC/phones

@@ -37,7 +37,7 @@ class Converter:
         stream = pkg_resources.resource_stream(__name__, "data/phonemes.csv")
         self.df = pd.read_csv(stream)
 
-    def convert(self, x, _from="xsampa", _to="ipa"):
+    def convert(self, x, _from="xsampa", _to="ipa") -> str:
         """
         It takes a string, and replaces all the symbols of the ``_from`` format to the ``_to`` format.
         

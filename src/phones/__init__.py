@@ -79,6 +79,10 @@ class PhoneCollection:
         self._master = deepcopy(self)
         self.lang_filter = None
 
+    @property
+    def features(self):
+        return self.source.feature_columns
+
     @staticmethod
     def feature_to_weight(feature: str) -> float:
         """
@@ -186,7 +190,7 @@ class PhoneCollection:
         phone_df = phone_df[phone_df[self.source.language_column] == language]
         return phone_df
 
-    def get_mean_allophone_distance(self, distance_weights=None, show_progress=False):
+    def get_mean_allophone_distance(self, distance_weights=None, show_progress=False) -> float:
         """
         For each row in the dataframe, we get the phone and allophone values.
         If the allophone is different from the phone, we get the mean distance between the allophone
