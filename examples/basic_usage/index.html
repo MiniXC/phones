@@ -303,6 +303,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-other-collections" class="md-nav__link">
+    Using other Collections
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -359,8 +366,37 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arithmetic/" class="md-nav__link">
+        Arithmetic for Phones and Features
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plots/" class="md-nav__link">
+        Plots
+      </a>
     </li>
   
 
@@ -422,6 +458,13 @@
           <li class="md-nav__item">
   <a href="#getting-a-specific-phone" class="md-nav__link">
     Getting a Specific Phone
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-other-collections" class="md-nav__link">
+    Using other Collections
   </a>
   
 </li>
@@ -1611,7 +1654,7 @@ This means you have access to phone definitons and their features in many langua
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 
     <div class="inner_cell">
         
@@ -1854,6 +1897,33 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 </div>
 
 </div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="using-other-collections">Using other Collections<a class="anchor-link" href="#Using-other-Collections">&#182;</a></h3><p>Sources for <code>PhoneCollection</code> can be imported from <code>phones.sources</code>.</p>
+<p>At the moment <a href="https://phoible.org">phoible</a> and <a href="https://github.com/dmort27/panphon">panphon</a> are supported.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">phones.sources</span> <span class="kn">import</span> <span class="n">PANPHON</span><span class="p">,</span> <span class="n">PHOIBLE</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">PhoneCollection</span><span class="p">(</span><span class="n">PANPHON</span><span class="p">)</span>
+</pre></div>
+
+        </div>
+    </div>
+
 </div>
 
 </div>
