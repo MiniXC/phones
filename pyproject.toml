@@ -15,7 +15,7 @@ requires-python = ">=3.6"
 license = {text = "MIT"}
 
 [project.urls]
-homepage = ""
+homepage = "https://cdminix.me/phones"
 
 [project.optional-dependencies]
 plots = [
