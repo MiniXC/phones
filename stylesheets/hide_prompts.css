@@ -1,3 +1,7 @@
-div.input_prompt, div.output_prompt {
+div.input_prompt, div.output_prompt, div.prompt {
     display: none
+}
+
+div.output_html.output_subarea {
+    max-width: 100%;
 }
