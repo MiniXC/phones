@@ -14,11 +14,15 @@ EXTRAS_REQUIRE = {
         'plotly>=5.5.0',
         'scikit-learn>=0.24.2',
     ],
+    'test': [
+        'pytest>=7.0.0',
+        'pytest-cov>=3.0.0',
+    ],
 }
 
 setup_kwargs = {
     'name': 'phones',
-    'version': '0.0.1',
+    'version': '0.0.2',
     'description': 'A collection of utilities for handling IPA phones.',
     'long_description': long_description,
     'license': 'MIT',
@@ -29,6 +33,7 @@ setup_kwargs = {
     'url': 'https://cdminix.me/phones',
     'packages': [
         'phones',
+        'phones.phonecodes.src',
     ],
     'package_dir': {'': 'src'},
     'package_data': {'': ['*']},
