@@ -1,0 +1,3 @@
+[submodule "src/phones/phonecodes"]
+	path = src/phones/phonecodes
+	url = git@github.com:MiniXC/phonecodes.git

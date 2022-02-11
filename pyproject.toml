@@ -1,6 +1,6 @@
 [project]
 name = "phones"
-version = "0.0.1"
+version = "0.0.2"
 description = "A collection of utilities for handling IPA phones."
 authors = [
     {name = "Christoph Minixhofer", email = "christoph.minixhofer@gmail.com"},
@@ -21,6 +21,10 @@ homepage = "https://cdminix.me/phones"
 plots = [
     "plotly>=5.5.0",
     "scikit-learn>=0.24.2",
+]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
 ]
 [tool]
 [tool.pdm]
