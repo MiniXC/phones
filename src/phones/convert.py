@@ -33,6 +33,7 @@ import re
 import pkg_resources
 
 from .phonecodes.src import phonecodes
+from phones.normalize import normalize_unicode
 
 def arpabet2xsampa(x, lang):
     return phonecodes.ipa2xsampa(phonecodes.arpabet2ipa(x, lang), lang)
@@ -72,7 +73,10 @@ class Converter:
         """
         func, langs = _phonecodes[(_from, _to)]
         assert not (not langs and lang is not None)
-        return func(x, langs).replace("ɝ", "ɜ˞")
+        result = func(normalize_unicode(x), langs)
+        result = normalize_unicode(result)
+        result = re.sub('\s+', ' ', result).strip()
+        return result
 
 
 converter = Converter()

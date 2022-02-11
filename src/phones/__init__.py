@@ -2,7 +2,7 @@ from functools import lru_cache
 import hashlib
 from lib2to3.pgen2.token import OP
 import os
-from typing import Callable, Dict, Iterable, List, Optional, Tuple, Union
+from typing import Callable, Dict, Iterable, List, Tuple, Union
 import unicodedata
 import pandas as pd
 import numpy as np
