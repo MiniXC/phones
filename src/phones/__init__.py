@@ -14,7 +14,6 @@ from pathlib import Path
 from .sources import PhoneSource, PHOIBLE
 from .features import Phone
 
-
 class PhoneCollection:
     def __init__(
         self,

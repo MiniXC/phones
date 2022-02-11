@@ -27,17 +27,38 @@ Examples:
     ```
     > ``'W ER L D'``
 """
+from typing import Optional
 import pandas as pd
 import re
 import pkg_resources
 
+from .phonecodes.src import phonecodes
+
+def arpabet2xsampa(x, lang):
+    return phonecodes.ipa2xsampa(phonecodes.arpabet2ipa(x, lang), lang)
+
+def xsampa2arpabet(x, lang):
+    return phonecodes.ipa2arpabet(phonecodes.xsampa2ipa(x, lang), lang)
+
+_phonecodes = {
+        ('arpabet','ipa'): (phonecodes.arpabet2ipa,False),
+        ('ipa','arpabet'): (phonecodes.ipa2arpabet,False),
+        ('ipa','callhome'): (phonecodes.ipa2callhome,['arz','cmn','spa']),
+        ('callhome','ipa'): (phonecodes.callhome2ipa,['arz','cmn','spa']),
+        ('ipa','disc'): (phonecodes.ipa2disc,False),
+        ('disc','ipa'): (phonecodes.disc2ipa,['nld','eng']),
+        ('ipa','xsampa'): (phonecodes.ipa2xsampa,False),
+        ('xsampa','ipa'): (phonecodes.xsampa2ipa,False),
+        ('arpabet','xsampa'): (arpabet2xsampa, False),
+        ('xsampa','arpabet'): (xsampa2arpabet, False),
+}
 
 class Converter:
     def __init__(self) -> None:
         stream = pkg_resources.resource_stream(__name__, "data/phonemes.csv")
         self.df = pd.read_csv(stream)
 
-    def convert(self, x, _from="xsampa", _to="ipa") -> str:
+    def convert(self, x, _from:str="xsampa", _to:str="ipa", lang:Optional[str]=None) -> str:
         """
         It takes a string, and replaces all the symbols of the ``_from`` format to the ``_to`` format.
         
@@ -49,33 +70,12 @@ class Converter:
         Returns:
             The converted string.
         """
-        df = self.df.dropna(subset=[_from, _to]).copy()
-        df["empty"] = df[_to].apply(lambda x: len(x) == 0)
-        df["length"] = df[_from].apply(lambda x: len(x))
-        df = df.sort_values(["empty", "length", _from, _to], ascending=False)
-        df = df.drop(columns=["empty", "length"])
-        df[_from] = df[_from].apply(lambda x: f"{x}(?![^\\(]*[\\)])")
-        df[_to] = df[_to].apply(lambda x: x.replace("\.", "."))
-        df[_to] = df[_to].apply(lambda x: f"({x})")
-        df = df.reset_index(drop=True)
-        if _from == "arpabet":
-            df.loc[len(df)] = ["", "", " "]
-            df.loc[-1] = [" ", " ", "\\d"]
-            df.index = df.index + 1
-            df = df.sort_index()
-        df.loc[len(df)] = ["", "", ""]
-        df.iloc[-1][_from] = "\\(|\\)"
-        x = f" {x} "
-        x = x.replace(
-            "ɜ˞", "ɝ"
-        )  # necessary because this seems to happen automatically in R
-        for _, row in df.iterrows():
-            x = re.sub(row[_from], row[_to], x)
-        return x.strip()
+        func, langs = _phonecodes[(_from, _to)]
+        assert not (not langs and lang is not None)
+        return func(x, langs).replace("ɝ", "ɜ˞")
 
 
 converter = Converter()
-
 
 class Ipa:
     def __init__(self, phone: str) -> None:
