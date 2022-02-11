@@ -38,7 +38,7 @@ from typing import List
 @dataclass
 class PhoneSource:
     """
-    The PhoneSource class is a dataclass that stores the information about a phone source. 
+    The PhoneSource class is a dataclass that stores the information about a phone source.
 
     A phone source is a csv containing phone definitions and their linguistic features
 

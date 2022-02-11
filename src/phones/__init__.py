@@ -14,6 +14,7 @@ from pathlib import Path
 from .sources import PhoneSource, PHOIBLE
 from .features import Phone
 
+
 class PhoneCollection:
     def __init__(
         self,
@@ -24,7 +25,7 @@ class PhoneCollection:
         _master: object = None,
     ) -> None:
         """Creates a ``PhoneCollection`` object that loads phones from a ``PhoneSource`` into a pandas DataFrame.
-        
+
         Args:
             source: The ``PhoneSource`` object that defines the source of the data.
             cache_dir: The directory where the data will be downloaded and cached.
@@ -88,10 +89,10 @@ class PhoneCollection:
         If the feature is a string, try to convert it to a float "-" is converted to -1, "+" to 1.
         If it's a string but can't be converted to a float, return 0.0.
         If it's a comma-delimited list of "+" and "-", return the mean of the list of floats.
-        
+
         Args:
             feature: The feature to be converted to a weight.
-        
+
         Return:
             The string feature converted to a float in `[-1.,0.,1.]`
         """
@@ -113,10 +114,10 @@ class PhoneCollection:
         """
         It takes a list of phones and returns a copy ``PhoneCollection`` with only the rows that have one of
         those phones.
-        
+
         Args:
             phones: A list of phones or single phone to filter on.
-        
+
         Returns:
             A new instance of the class, with the filtered data.
         """
@@ -133,11 +134,11 @@ class PhoneCollection:
         """
         It takes a list of languages and returns a copy ``PhoneCollection`` with only the rows that have one of
         those languages.
-        
+
         Args:
             langs: A list of languages or single language to filter on.
             inplace: Modifies the underlying dataframe, affecting phones.
-        
+
         Returns:
             A new instance of the class, with the filtered data.
         """
@@ -189,16 +190,18 @@ class PhoneCollection:
         phone_df = phone_df[phone_df[self.source.language_column] == language]
         return phone_df
 
-    def get_mean_allophone_distance(self, distance_weights=None, show_progress=False) -> float:
+    def get_mean_allophone_distance(
+        self, distance_weights=None, show_progress=False
+    ) -> float:
         """
         For each row in the dataframe, we get the phone and allophone values.
         If the allophone is different from the phone, we get the mean distance between the allophone
         and the phone. We return the mean of all allophone <-> phone distances.
-        
+
         Args:
             distance_weights: A dictionary of weights for each distance type.
             show_progress: If True, show a progress bar.
-        
+
         Returns:
             The mean of the distances between allophones and their phones.
         """
@@ -242,13 +245,13 @@ class PhoneCollection:
         """
         For a given phone, find the mean of all the features for that phone. Then, find the
         distance between that phone and another phone.
-        
+
         Args:
             phone: The phone to compare to the other phone.
             other_phone: The other phone to compare to.
             distance_fn: The distance function to use.
             distance_weights: This is a list of weights for each feature.
-        
+
         Return:
             The mean distance between the two phones.
         """
@@ -278,11 +281,11 @@ class PhoneCollection:
         ] = distance.euclidean,
     ) -> List[Tuple[float, object]]:
         """Given a vector, find the phone that is closest to the vector
-        
+
         Args:
             vector: The vector we're looking for the closest phones to.
             distance_fn: The function that will be used to calculate the distance between the vector and phones.
-        
+
         Returns:
             A list of tuples, where each tuple contains a distance and a phone.
         """
@@ -313,11 +316,11 @@ class PhoneCollection:
         ] = distance.euclidean,
     ) -> List[Tuple[float, object]]:
         """Given a phone, return the closest phone in the collection
-        
+
         Args:
             phone: The phone to find the closest phone to.
             distance_fn: The function that will be used to measure the distance between phones.
-        
+
         Returns:
             A list of tuples, where each tuple contains a distance and a phone.
         """
@@ -339,10 +342,10 @@ class PhoneCollection:
         List[Tuple[float, str]], Tuple[List[Tuple[float, str]], List[Tuple[float, str]]]
     ]:
         """Given a phone, a source language, a target language, a distance function, and a distance weight,
-        `get_closest` returns the closest phone in the target language. 
+        `get_closest` returns the closest phone in the target language.
         It also returns all the allophones of the source phone in the target language.
-        It also returns the distance between the source phone and the closest phone. 
-        
+        It also returns the distance between the source phone and the closest phone.
+
         Example:
         Let's say we want to find the closest phone to the phone `ð` in the language `English` in `German`.
         ```py
@@ -350,7 +353,7 @@ class PhoneCollection:
         pc.get_closest("ð", "eng", "deu")
         ```
         > ``[(2.8284271247461903, 'z'), (2.8284271247461903, 'ʒ')]``
-        
+
         Args:
             phone: The phone to be mapped.
             src_language: The language of the phone that you want to find the closest one to.
@@ -362,7 +365,7 @@ class PhoneCollection:
                 Otherwise, the weights are normalised and then used for the distance calculations.
             allow_allophones: If True, then if the phone is not found in the inventory, search for a phone the given ``phone`` is an allophone of.
             return_all: If True, return all phones and their distances, not just the closest ones.
-        
+
         Returns:
             Returns a list of ``(distance, phone)`` for the closests phones or for all phones if ``return_all`` is True.
             If ``allow_allophones`` is True, returns a Tuple of lists with the first entry being the closests phones and the second being allophones.

@@ -7,7 +7,7 @@ class PhoneFeature:
     def __init__(self, feature: str, value: float) -> None:
         """
         Create a new instance of a ``PhoneFeature`` with the feature and value provided.
-        
+
         Args:
             feature: The feature to be evaluated.
             value: The value of the feature.
@@ -26,7 +26,7 @@ class Phone:
         collection: Optional[object] = None,
     ) -> None:
         """Create a new `Phone` object.
-        
+
         Args:
             index: The index of the phone in the phone set.
             features: A dictionary of features. When not provided with numerical values, `-` will be replaced with `-1` and `+` with `1`.
@@ -125,10 +125,10 @@ class Phone:
         """
         The langs function takes a string or list of languages and returns the phone with the languages
         filter applied.
-        
+
         Args:
             langs: A list of language codes or single language code.
-        
+
         Returns:
             A new instance of the class.
         """
@@ -144,12 +144,12 @@ class Phone:
     ) -> Union[List[Tuple[float, object]], object]:
         """
         Given a phone, it will return a new phone with a random vector that is close to the original phone.
-        
+
         Args:
             p: The element-wise probability of a change in a phone vector.
             abs_max_change: The maximum absolute value an element of the phone vector can change.
             random_state: Seed used for the random numbers used.
-        
+
         Returns:
             The phone object with a noised feature vector.
         """
@@ -165,7 +165,7 @@ class Phone:
     def closest(self) -> List[Tuple[float, object]]:
         """
         Given the current phone's vector, return the closest phone(s) in the collection and their distances.
-        
+
         Returns:
             A list of distance,phone tuples.
         """
