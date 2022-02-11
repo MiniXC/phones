@@ -25,6 +25,6 @@ pip install phones[plots]
 
 !!! note
 
-    This is the `0.0.1` release of this library, and things might be unstable.
+    This is the `0.0.2` release of this library, and things might be unstable.
 
     Please report issues to [https://github.com/MiniXC/phones]()
