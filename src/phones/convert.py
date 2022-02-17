@@ -30,7 +30,7 @@ class Converter:
             ("ipa", "callhome"): (phonecodes.ipa2callhome, ["arz", "cmn", "spa"]),
             ("callhome", "ipa"): (phonecodes.callhome2ipa, ["arz", "cmn", "spa"]),
             ("ipa", "disc"): (phonecodes.ipa2disc, False),
-            ("disc", "ipa"): (phonecodes.disc2ipa, ["nld", "eng"]),
+            ("disc", "ipa"): (phonecodes.disc2ipa, ["nld", "eng", "deu"]),
             ("ipa", "xsampa"): (phonecodes.ipa2xsampa, False),
             ("xsampa", "ipa"): (phonecodes.xsampa2ipa, False),
             ("arpabet", "xsampa"): (self.arpabet2xsampa, False),
