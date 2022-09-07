@@ -70,6 +70,7 @@ class Phone:
         self.index = normalize("NFC", index)
         self.feature_names = [f.lower() for f in sorted(features.keys())]
         features = {k.lower(): v for k, v in features.items()}
+        self.features = features
         self.vector = [features[k] for k in self.feature_names]
         self.vector = np.array(self.vector)
         self.language_code = language_code
@@ -82,6 +83,15 @@ class Phone:
         else:
             self.allophones = allophones
         self.collection = collection
+
+    def get_feature_vector(self, features: List[str]) -> np.ndarray:
+        """
+        Get the feature vector of the phone for the features provided. 
+
+        Returns:
+            A numpy array of the feature vector.
+        """
+        return np.array([self.features[k] for k in self.feature_names if k in features])
 
     @staticmethod
     def _normalize(v) -> List[float]:

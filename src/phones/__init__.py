@@ -2,7 +2,6 @@ from functools import lru_cache
 import hashlib
 from lib2to3.pgen2.token import OP
 import os
-from types import NoneType
 from typing import Callable, Dict, Iterable, List, Tuple, Union
 import unicodedata
 import pandas as pd
@@ -49,7 +48,6 @@ class PhoneCollection:
             dfs.append(df)
         self.data = pd.concat(dfs)
 
-        self.orig_data = deepcopy(self.data)
         for feature in self.source.feature_columns:
             self.data[feature] = self.data[feature].apply(
                 PhoneCollection.feature_to_weight
@@ -68,15 +66,16 @@ class PhoneCollection:
         if merge_same_language and self.source.language_column is not None:
             self.data = self.data.dropna(subset=[self.source.language_column])
 
-
             self.data = (
                 self.data.groupby(self.columns, dropna=False)[self.source.feature_columns]
                 .mean()
                 .reset_index()
             )
 
+        self.data = self.data.dropna(subset=[self.source.index_column, self.source.language_column])
+
         self.data[self.source.index_column] = self.data[self.source.index_column].apply(
-            lambda x: unicodedata.normalize("NFC", str(x))
+            lambda x: unicodedata.normalize("NFC", x)
         )
         if self.source.allophone_column is not None:
             self.data[self.source.allophone_column] = self.data[
@@ -152,13 +151,13 @@ class PhoneCollection:
         _self._master = deepcopy(self)
         return _self
 
-    def dialects(self, dialects: Union[str, List[str], NoneType], inplace=True) -> object:
+    def dialects(self, dialects: Union[str, List[str], None], inplace=True) -> object:
         """
         It takes a list of dialects and returns a copy ``PhoneCollection`` with only the rows that have one of
         those dialects.
 
         Args:
-            dialects: A list of dialects or single dialects to filter on. Use "standard" to remove all dialects except the one without a specific name.
+            dialects: A list of dialects or single dialects to filter on. Use ```None``` to remove all dialects except the one without a specific name.
             inplace: Modifies the underlying dataframe, affecting phones.
 
         Returns:
