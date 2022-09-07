@@ -2,6 +2,7 @@ from functools import lru_cache
 import hashlib
 from lib2to3.pgen2.token import OP
 import os
+from types import NoneType
 from typing import Callable, Dict, Iterable, List, Tuple, Union
 import unicodedata
 import pandas as pd
@@ -10,10 +11,10 @@ from tqdm.auto import tqdm
 from scipy.spatial import distance
 from copy import deepcopy
 from pathlib import Path
+import re
 
 from .sources import PhoneSource, PHOIBLE
 from .features import Phone
-
 
 class PhoneCollection:
     def __init__(
@@ -21,7 +22,7 @@ class PhoneCollection:
         source: PhoneSource = PHOIBLE,
         cache_dir: str = f"{str(Path.home())}/.cache/phones",
         merge_same_language: bool = True,
-        drop_dialects: bool = True,
+        load_dialects: bool = False,
         _master: object = None,
     ) -> None:
         """Creates a ``PhoneCollection`` object that loads phones from a ``PhoneSource`` into a pandas DataFrame.
@@ -30,7 +31,7 @@ class PhoneCollection:
             source: The ``PhoneSource`` object that defines the source of the data.
             cache_dir: The directory where the data will be downloaded and cached.
             merge_same_language: If true, multiple phone definitions in the same language are merged.
-            drop_dialects: If true, dialects are ignored.
+            load_dialects: If false, dialects are ignored.
         """
         self.source = source
         self.source.feature_columns = sorted(self.source.feature_columns)
@@ -47,6 +48,8 @@ class PhoneCollection:
                 df.to_pickle(download_path)
             dfs.append(df)
         self.data = pd.concat(dfs)
+
+        self.orig_data = deepcopy(self.data)
         for feature in self.source.feature_columns:
             self.data[feature] = self.data[feature].apply(
                 PhoneCollection.feature_to_weight
@@ -56,28 +59,33 @@ class PhoneCollection:
             self.source.language_column,
             self.source.allophone_column,
         ]
-        if drop_dialects and self.source.dialect_column is not None:
+        if not load_dialects and self.source.dialect_column is not None:
             self.data = self.data[self.data[self.source.dialect_column].isna()]
         else:
             self.columns.append(self.source.dialect_column)
         self.columns = [c for c in self.columns if c is not None]
+
         if merge_same_language and self.source.language_column is not None:
             self.data = self.data.dropna(subset=[self.source.language_column])
+
+
             self.data = (
-                self.data.groupby(self.columns)[self.source.feature_columns]
+                self.data.groupby(self.columns, dropna=False)[self.source.feature_columns]
                 .mean()
                 .reset_index()
             )
+
         self.data[self.source.index_column] = self.data[self.source.index_column].apply(
-            lambda x: unicodedata.normalize("NFC", x)
+            lambda x: unicodedata.normalize("NFC", str(x))
         )
         if self.source.allophone_column is not None:
             self.data[self.source.allophone_column] = self.data[
                 self.source.allophone_column
-            ].apply(lambda x: unicodedata.normalize("NFC", x))
+            ].apply(lambda x: unicodedata.normalize("NFC", str(x)))
         self.data = self.data[self.columns + self.source.feature_columns]
         self._master = deepcopy(self)
         self.lang_filter = None
+        self.load_dialects = load_dialects
 
     @property
     def features(self):
@@ -110,6 +118,20 @@ class PhoneCollection:
                 else:
                     return 0.0
 
+    @property
+    def lang_list(self) -> List[str]:
+        return list(sorted(self.data[self.source.language_column].unique()))
+
+    @property
+    def phone_list(self) -> List[str]:
+        return list(sorted(self.data[self.source.index_column].unique()))
+
+    @property
+    def dialect_list(self) -> List[str]:
+        if not self.load_dialects:
+            raise ValueError("Dialects are not loaded.")
+        return list(sorted(self.data[self.source.dialect_column].unique()))
+
     def phones(self, phones: Union[str, List[str]]) -> object:
         """
         It takes a list of phones and returns a copy ``PhoneCollection`` with only the rows that have one of
@@ -128,6 +150,36 @@ class PhoneCollection:
             phones = [unicodedata.normalize("NFC", p) for p in phones]
             _self.data = _self.data[_self.data[self.source.index_column].isin(phones)]
         _self._master = deepcopy(self)
+        return _self
+
+    def dialects(self, dialects: Union[str, List[str], NoneType], inplace=True) -> object:
+        """
+        It takes a list of dialects and returns a copy ``PhoneCollection`` with only the rows that have one of
+        those dialects.
+
+        Args:
+            dialects: A list of dialects or single dialects to filter on. Use "standard" to remove all dialects except the one without a specific name.
+            inplace: Modifies the underlying dataframe, affecting phones.
+
+        Returns:
+            A new instance of the class, with the filtered data.
+        """
+        if not self.load_dialects:
+            raise ValueError("Dialects are not loaded.")
+        _self = deepcopy(self)
+        if len(dialects) > 0:
+            if not isinstance(dialects, list):
+                dialects = [dialects]
+            dialect_mask = _self.data[self.source.dialect_column].str.match("|".join([re.escape(d).lower() for d in dialects]), case=False)
+            if dialects != [None]:
+                dialect_mask = dialect_mask.fillna(False) # remove standard dialect
+            else:
+                dialect_mask = dialect_mask.isna()
+            _self.data = _self.data[dialect_mask]
+        _self.dialect_filter = set(dialects)
+        if inplace:
+            _self._master.data = _self.data
+            _self._master.dialect_filter = _self.dialect_filter
         return _self
 
     def langs(self, langs, inplace=True) -> object:
