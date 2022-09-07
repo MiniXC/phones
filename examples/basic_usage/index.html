@@ -315,6 +315,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dialects" class="md-nav__link">
+    Dialects
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -471,6 +478,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialects" class="md-nav__link">
+    Dialects
+  </a>
   
 </li>
       
@@ -1654,7 +1668,7 @@ This means you have access to phone definitons and their features in many langua
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 
     <div class="inner_cell">
         
@@ -1681,7 +1695,7 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 
     <div class="inner_cell">
         
@@ -1702,7 +1716,7 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -1755,6 +1769,51 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 
 <div class="output_text output_subarea output_execute_result">
 <pre>[a (deu), aɪ (deu), aʊ (deu), aː (deu), aː (eng)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Languages can be listed using <code>lang_list</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">pc</span><span class="o">.</span><span class="n">lang_list</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;arh&#39;, &#39;cni&#39;, &#39;cot&#39;, &#39;cox&#39;, &#39;mcb&#39;]</pre>
 </div>
 
 </div>
@@ -1903,6 +1962,51 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>As with languages, phones can be listed using <code>phone_list</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">pc</span><span class="o">.</span><span class="n">langs</span><span class="p">(</span><span class="s2">&quot;eng&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">phone_list</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[16]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;aː&#39;, &#39;b&#39;, &#39;d&#39;, &#39;d̠ʒ&#39;, &#39;e&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="using-other-collections">Using other Collections<a class="anchor-link" href="#Using-other-Collections">&#182;</a></h3><p>Sources for <code>PhoneCollection</code> can be imported from <code>phones.sources</code>.</p>
 <p>At the moment <a href="https://phoible.org">phoible</a> and <a href="https://github.com/dmort27/panphon">panphon</a> are supported.</p>
 
@@ -1924,6 +2028,142 @@ As phoible uses <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Lan
         </div>
     </div>
 
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="dialects">Dialects<a class="anchor-link" href="#Dialects">&#182;</a></h2><p>When using the <code>PHOIBLE</code> source, dialects are not loaded per default. You can change this by using <code>load_dialects</code> and specifying a specific dialect by using <code>.dialects</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">pc_dialects</span> <span class="o">=</span> <span class="n">PhoneCollection</span><span class="p">(</span><span class="n">load_dialects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pc_dialects</span><span class="o">.</span><span class="n">langs</span><span class="p">(</span><span class="s2">&quot;eng&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dialects</span><span class="p">(</span><span class="s2">&quot;english (liverpool)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[a (eng), aɪ (eng), aʊ (eng), b (eng), d (eng)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Some languages do not have a "standard" version and are only accessible when using <code>load_dialects</code>, for example Asturian.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">pc</span><span class="o">.</span><span class="n">langs</span><span class="p">(</span><span class="s2">&quot;ast&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">pc_dialects</span><span class="o">.</span><span class="n">langs</span><span class="p">(</span><span class="s2">&quot;ast&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dialects</span><span class="p">(</span><span class="s2">&quot;asturian (north-eastern)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>([], [b (ast), d̪ (ast), e̞ (ast), f (ast), i (ast)])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can list dialects using <code>dialect_list</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">pc_dialects</span><span class="o">.</span><span class="n">langs</span><span class="p">(</span><span class="s2">&quot;ast&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dialect_list</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;Asturian (North-Eastern)&#39;, &#39;Asturian (Western)&#39;]</pre>
+</div>
+
+</div>
+
+</div>
 </div>
 
 </div>
