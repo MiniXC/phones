@@ -22,7 +22,7 @@ EXTRAS_REQUIRE = {
 
 setup_kwargs = {
     'name': 'phones',
-    'version': '0.0.3',
+    'version': '0.0.4',
     'description': 'A collection of utilities for handling IPA phones.',
     'long_description': long_description,
     'license': 'MIT',
@@ -33,6 +33,7 @@ setup_kwargs = {
     'url': 'https://cdminix.me/phones',
     'packages': [
         'phones',
+        'phones.phonecodes.src',
     ],
     'package_dir': {'': 'src'},
     'package_data': {'': ['*']},

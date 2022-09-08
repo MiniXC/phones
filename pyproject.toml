@@ -1,6 +1,6 @@
 [project]
 name = "phones"
-version = "0.0.3"
+version = "0.0.4"
 description = "A collection of utilities for handling IPA phones."
 authors = [
     {name = "Christoph Minixhofer", email = "christoph.minixhofer@gmail.com"},
@@ -38,9 +38,6 @@ docs = [
     "pymdown-extensions>=9.1",
     "markdown-include>=0.6.0",
 ]
-
-[tool.setuptools.package-data]
-phones = ["src"]
 
 [build-system]
 requires = ["pdm-pep517"]

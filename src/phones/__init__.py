@@ -72,7 +72,10 @@ class PhoneCollection:
                 .reset_index()
             )
 
-        self.data = self.data.dropna(subset=[self.source.index_column, self.source.language_column])
+        if self.source.language_column is not None:
+            self.data = self.data.dropna(subset=[self.source.index_column, self.source.language_column])
+        else:
+            self.data = self.data.dropna(subset=[self.source.index_column])
 
         self.data[self.source.index_column] = self.data[self.source.index_column].apply(
             lambda x: unicodedata.normalize("NFC", x)
@@ -309,10 +312,10 @@ class PhoneCollection:
         phones_df = self.data.groupby(self.source.index_column).mean().reset_index()
         phone1_df = phones_df[phones_df[self.source.index_column] == phone][
             self.source.feature_columns
-        ].values
+        ].values.flatten()
         phone2_df = phones_df[phones_df[self.source.index_column] == other_phone][
             self.source.feature_columns
-        ].values
+        ].values.flatten()
         if distance_weights is None:
             return distance_fn(phone1_df, phone2_df)
         else:
