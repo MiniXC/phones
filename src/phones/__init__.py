@@ -132,7 +132,7 @@ class PhoneCollection:
     def dialect_list(self) -> List[str]:
         if not self.load_dialects:
             raise ValueError("Dialects are not loaded.")
-        return list(sorted(self.data[self.source.dialect_column].unique()))
+        return list(sorted(self.data[self.source.dialect_column].dropna().unique()))
 
     def phones(self, phones: Union[str, List[str]]) -> object:
         """
@@ -218,6 +218,23 @@ class PhoneCollection:
         phone_df = (
             self.data.groupby(
                 [c for c in self.columns if c != self.source.allophone_column]
+            )
+            .mean()
+            .reset_index()
+        )
+        return [self._row_to_phone(row) for _, row in phone_df.iterrows()]
+
+    @property
+    def values_with_allophones(self) -> List[object]:
+        """
+        The collection as a list of phones.
+
+        Returns:
+            A list of ``Phone`` objects.
+        """
+        phone_df = (
+            self.data.groupby(
+                [c for c in self.columns]
             )
             .mean()
             .reset_index()
