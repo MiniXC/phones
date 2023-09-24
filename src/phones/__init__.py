@@ -15,6 +15,7 @@ import re
 from .sources import PhoneSource, PHOIBLE
 from .features import Phone
 
+
 class PhoneCollection:
     def __init__(
         self,
@@ -67,13 +68,17 @@ class PhoneCollection:
             self.data = self.data.dropna(subset=[self.source.language_column])
 
             self.data = (
-                self.data.groupby(self.columns, dropna=False)[self.source.feature_columns]
+                self.data.groupby(self.columns, dropna=False)[
+                    self.source.feature_columns
+                ]
                 .mean()
                 .reset_index()
             )
 
         if self.source.language_column is not None:
-            self.data = self.data.dropna(subset=[self.source.index_column, self.source.language_column])
+            self.data = self.data.dropna(
+                subset=[self.source.index_column, self.source.language_column]
+            )
         else:
             self.data = self.data.dropna(subset=[self.source.index_column])
 
@@ -172,9 +177,11 @@ class PhoneCollection:
         if len(dialects) > 0:
             if not isinstance(dialects, list):
                 dialects = [dialects]
-            dialect_mask = _self.data[self.source.dialect_column].str.match("|".join([re.escape(d).lower() for d in dialects]), case=False)
+            dialect_mask = _self.data[self.source.dialect_column].str.match(
+                "|".join([re.escape(d).lower() for d in dialects]), case=False
+            )
             if dialects != [None]:
-                dialect_mask = dialect_mask.fillna(False) # remove standard dialect
+                dialect_mask = dialect_mask.fillna(False)  # remove standard dialect
             else:
                 dialect_mask = dialect_mask.isna()
             _self.data = _self.data[dialect_mask]
@@ -219,7 +226,7 @@ class PhoneCollection:
             self.data.groupby(
                 [c for c in self.columns if c != self.source.allophone_column]
             )
-            .mean()
+            .mean(numeric_only=True)
             .reset_index()
         )
         return [self._row_to_phone(row) for _, row in phone_df.iterrows()]
@@ -232,13 +239,7 @@ class PhoneCollection:
         Returns:
             A list of ``Phone`` objects.
         """
-        phone_df = (
-            self.data.groupby(
-                [c for c in self.columns]
-            )
-            .mean()
-            .reset_index()
-        )
+        phone_df = self.data.groupby([c for c in self.columns]).mean().reset_index()
         return [self._row_to_phone(row) for _, row in phone_df.iterrows()]
 
     @property
