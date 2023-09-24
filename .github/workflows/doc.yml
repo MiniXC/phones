@@ -25,8 +25,7 @@ jobs:
       - name: Install Dependencies
         run: |
           curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
-          pdm install -G docs
-          pdm install -G plots
+          pdm install -G all
       - name: Build Documentation
         run: cd docs && pdm run mkdocs build
       - name: Deploy
